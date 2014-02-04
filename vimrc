@@ -36,6 +36,12 @@ execute pathogen#infect()
 " Enable syntax highlighting
 syntax on
 
+" Enable solarized for gvim
+if has('gui_running')
+	set background =dark
+	colorscheme solarized
+endif
+
 " Search as you type
 set incsearch
 
