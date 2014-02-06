@@ -48,7 +48,7 @@ set incsearch
 " Ignore case if all lowercase, case sensitive otherwise
 set smartcase
 
-" Visual flash instead of audio beep
+" No annoying error bells9
 "set noerrorbells
 "set visualbell
 set t_vb=
@@ -85,6 +85,10 @@ set backspace=eol,start,indent
 
 " For CtrlP's working directory
 let g:ctrlp_working_path_mode = 'ra'
+
+" Eliminate <ESC> lag
+set ttimeout
+set ttimeoutlen=100
 
 
 "-------------------------
