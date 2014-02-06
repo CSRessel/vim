@@ -142,7 +142,8 @@ nnoremap <Leader>e :!sudo tee %<CR>
 nnoremap <Leader>c :setlocal spell!<CR>
 
 " For ConqueTerm
-nnoremap <Leader>x :ConqueTermVSplit bash<CR> " For Conque Term
+nnoremap <Leader>x :ConqueTermVSplit bash<CR>
+nnoremap <Leader>z :ConqueTermSplit bash<CR>
 
 " For NERDTree
 set autochdir
