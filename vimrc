@@ -16,25 +16,25 @@ syntax on
 
 " Options ------------------------------------------------------{{{
 
-set incsearch 						" Search as you type
+set incsearch						" Search as you type
 set hlsearch						" highlight search matches
-set smartcase 						" Ignore case if all lowercase, case sensitive otherwise
-set t_vb= 							" Remove annoying errors
-set tm=500 							" Remove annoying errors
-set number 							" Line numbs
+set smartcase						" Ignore case if all lowercase, case sensitive otherwise
+set t_vb=							" Remove annoying errors
+set tm=500							" Remove annoying errors
+set number							" Line numbs
 set rnu 							" Relative line numbs
-set tabstop=4						" Tabs w/ tab char equiv to four spaces"
-set shiftwidth=4					" Tabs w/ tab char equiv to four spaces"
-set autoindent 						" Repeats previous line spacing (tabs + comments)
+set tabstop=4						" Tabs w/ tab char equiv to four spaces
+set shiftwidth=4					" Tabs w/ tab char equiv to four spaces
+set autoindent						" Repeats previous line spacing (tabs + comments)
 set history=1000					" Plenty of history
-set undolevels=1000					" Lots of undo levels"
-set clipboard=unnamedplus 			" Use the system clipboard as default copy/paste register
-set title 							" Have vim as title in a shell
-set backspace=eol,start,indent 		" Have backspace act as it should
-set ttimeout 						" Eliminate <ESC> lag
+set undolevels=1000					" Lots of undo levels
+set clipboard=unnamedplus			" Use the system clipboard as default copy/paste register
+set title							" Have vim as title in a shell
+set backspace=eol,start,indent		" Have backspace act as it should
+set ttimeout						" Eliminate <ESC> lag
 set ttimeoutlen=100 				" Eliminate <ESC> lag
 set listchars=extends:❯,precedes:❮	" Add chars for unwrapped lines
-set foldmethod=marker				" Fold text between {{{ and }}} (in comments)"
+set foldmethod=marker				" Fold text between {{{ and }}} (in comments)
 
 " Set the colorscheme for gvim
 if has('gui_running')
