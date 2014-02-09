@@ -1,4 +1,6 @@
-" C S Ressel's vimrc
+" vimrc
+" Author: C S Ressel
+" Source: https://github.com/csressel/vim/vimrc
 " Created 6/16/13
 "-------------------------
 "-------------------------
@@ -6,24 +8,15 @@
 
 "-------------------------
 "-------------------------
-" Random
+" Preamble
 "-------------------------
 "-------------------------
 
-
-" Automatically reload vimrc when it's saved
-"au BufWritePost .vimrc so ~/.vimrc
-
-" For filetype specific options
-filetype indent plugin on
-
-" For vim-latexsuite
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
-
-" For pathogen:
+filetype off
 execute pathogen#infect()
+filetype plugin indent on
+set nocompatible
+syntax on
 
 
 "-------------------------
@@ -32,63 +25,47 @@ execute pathogen#infect()
 "-------------------------
 "-------------------------
 
-
-" Enable syntax highlighting
-syntax on
-
-" Enable solarized for gvim
-if has('gui_running')
+if has('gui_running') 			" Set the colorscheme for gvim
 	set background =dark
 	colorscheme solarized
 endif
-
-" Search as you type
-set incsearch
-
-" Ignore case if all lowercase, case sensitive otherwise
-set smartcase
-
-" No annoying error bells9
-"set noerrorbells
-"set visualbell
-set t_vb=
-set tm=500
-
-" Line numbs
-set number
-" Relative line numbs
-set rnu
-
-" Length of tabs
+set incsearch 					" Search as you type
+set smartcase 					" Ignore case if all lowercase, case sensitive otherwise
+set t_vb= 						" Remove annoying errors
+set tm=500 						" Remove annoying errors
+set number 						" Line numbs
+set rnu 						" Relative line numbs
 set tabstop=4
 set shiftwidth=4
-
-" Repeats previous line spacing (tabs + comments)
-set autoindent
-
-" remember more commands and and search history
+set autoindent 					" Repeats previous line spacing (tabs + comments)
 set history=1000
-" LOTS of levels of undo
 set undolevels=1000
+set clipboard=unnamedplus 		" Use the system clipboard as default copy/paste register
+set title 						" Have vim as title in a shell
+set backspace=eol,start,indent 	" Have backspace act as it should
+set ttimeout 					" Eliminate <ESC> lag
+set ttimeoutlen=100 			" Eliminate <ESC> lag
 
-" Use the system clipboard as default copy/paste register
-set clipboard=unnamedplus
 
-" Set of characters to be used by autoclose plugin
+"-------------------------
+"-------------------------
+" Plugin stuff
+"-------------------------
+"-------------------------
+
+" For Autoclose
 let g:AutoClosePairs = "() [] \" '"
-
-" Have vim as title in a shell
-set title
-
-" Have backspace act as it should
-set backspace=eol,start,indent
-
-" For CtrlP's working directory
+" For CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-
-" Eliminate <ESC> lag
-set ttimeout
-set ttimeoutlen=100
+" For NERDTree
+set autochdir
+let NERDTreeChDirMode=2
+" For vim-latexsuite
+"set grepprg=grep\ -nH\ $*
+"let g:tex_flavor = "latex"
+"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 
 "-------------------------
@@ -97,23 +74,14 @@ set ttimeoutlen=100
 "-------------------------
 "-------------------------
 
-
-" The smash escape
-"inoremap jk <Esc>
-"inoremap kj <Esc>
-"vnoremap jk <Esc>
-"vnoremap kj <Esc>
-
-" EOL/BOL from home row:
 noremap H ^
 noremap L $
-
-" For autocompleting braces
 inoremap {<CR>  {<CR>}<Esc>O
-
-" For CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+cmap W w<CR>
+cmap Q q<CR>
+cmap w! !sudo tee %<CR>
+noremap / /\v
+noremap S :%s/
 
 
 "-------------------------
@@ -122,32 +90,14 @@ let g:ctrlp_cmd = 'CtrlP'
 "-------------------------
 "-------------------------
 
-
 " Map the leader to...
 let mapleader =","
 " And the localleader to...
 let maplocalleader ="\\"
 
-
-" Quickly quit
-nnoremap <Leader>q :q<CR>
-
-" Quickly save
-nnoremap <Leader>w :w<CR>
-
-" Save without root privileges
-nnoremap <Leader>e :!sudo tee %<CR>
-
-" Toggle spellcheck
 nnoremap <Leader>c :setlocal spell!<CR>
-
-" For ConqueTerm
 nnoremap <Leader>x :ConqueTermVSplit bash<CR>
 nnoremap <Leader>z :ConqueTermSplit bash<CR>
-
-" For NERDTree
-set autochdir
-let NERDTreeChDirMode=2
 nnoremap <Leader>n :NERDTreeToggle .<CR>
 
 
@@ -157,10 +107,12 @@ nnoremap <Leader>n :NERDTreeToggle .<CR>
 "-------------------------
 "-------------------------
 
-
-" augroup stops autocmd spam from reloading vimrc
+" augroup stops autocmd spam caused by repeated reloading of vimrc
 augroup vimrc_autocmd
 	autocmd!
+
+	" Automatically reload vimrc when it's saved
+	autocmd BufWritePost .vimrc so ~/.vimrc
 
 	" C and C++ options
 	autocmd FileType c setlocal comments-=://
@@ -187,4 +139,3 @@ augroup vimrc_autocmd
     autocmd FileType sh setlocal comments+=:#
 
 augroup END
-
