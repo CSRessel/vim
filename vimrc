@@ -130,7 +130,7 @@ augroup vimrc_autocmd
 	autocmd FileType java setlocal comments+=f://
 	" Perl options
 	autocmd FileType perl setlocal comments-=:#
-    autocmd FileType perl setlocal comments+=:#
+	autocmd FileType perl setlocal comments+=:#
 	" Ruby options
 	autocmd FileType ruby setlocal comments-=:#
 	autocmd FileType ruby setlocal comments+=f:#
@@ -140,7 +140,7 @@ augroup vimrc_autocmd
 	autocmd FileType ruby imap <S-CR>    <CR><CR>end<Esc>-cc
 	" Shell options
 	autocmd FileType sh setlocal comments-=:#
-    autocmd FileType sh setlocal comments+=:#
+	autocmd FileType sh setlocal comments+=:#
 	" Vim options
 	autocmd Filetype vim let g:AutoClosePairs = "() []"
 
