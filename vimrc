@@ -40,7 +40,6 @@ set clipboard=unnamedplus
 set title
 " Have backspace act as it should
 set backspace=eol,start,indent
-" Eliminate <ESC> lag set ttimeout set ttimeoutlen=100
 " Add chars for unwrapped lines
 set listchars=extends:❯,precedes:❮
 " Fold text between {{{ and }}} (in comments)
@@ -62,52 +61,48 @@ set number
 " Relative line numbs
 set rnu
 
-
 " Time out on key codes but not mappings.
 " Basically this makes terminal Vim work sanely.
 set notimeout
 set ttimeout
 set ttimeoutlen=10
+set noesckeys
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
-" Restore cursor position file open {{{
+" Restore cursor position on file open {{{
 augroup JumpCursorOnEdit
-   au!
-   autocmd BufReadPost *
-            \ if expand("<afile>:p:h") !=? $TEMP |
-            \   if line("'\"") > 1 && line("'\"") <= line("$") |
-            \     let JumpCursorOnEdit_foo = line("'\"") |
-            \     let b:doopenfold = 1 |
-            \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-            \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-            \        let b:doopenfold = 2 |
-            \     endif |
-            \     exe JumpCursorOnEdit_foo |
-            \   endif |
-            \ endif
-   " Need to postpone using "zv" until after reading the modelines.
-   autocmd BufWinEnter *
-            \ if exists("b:doopenfold") |
-            \   exe "normal zv" |
-            \   if(b:doopenfold > 1) |
-            \       exe  "+".1 |
-            \   endif |
-            \   unlet b:doopenfold |
-            \ endif
+	au!
+	autocmd BufReadPost *
+	\ if expand("<afile>:p:h") !=? $TEMP |
+	\	if line("'\"") > 1 && line("'\"") <= line("$") |
+	\		let JumpCursorOnEdit_foo = line("'\"") |
+	\		let b:doopenfold = 1 |
+	\		if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
+	\			let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
+	\			let b:doopenfold = 2 |
+	\		endif |
+	\		exe JumpCursorOnEdit_foo |
+	\	endif |
+	\ endif
+	" Need to postpone using "zv" until after reading the modelines.
+	autocmd BufWinEnter *
+	\ if exists("b:doopenfold") |
+	\	exe "normal zv" |
+	\	if(b:doopenfold > 1) |
+	\		exe  "+".1 |
+	\	endif |
+	\	unlet b:doopenfold |
+	\ endif
 augroup END
 " }}}
-
-" Look and feel {{{
 
 " Set the colorscheme for gvim
 if has('gui_running')
 	set background =dark
 	colorscheme solarized
 endif
-
-" }}}
 
 " }}}
 
@@ -130,13 +125,22 @@ set autochdir
 let NERDTreeChDirMode=2
 " }}}
 
+" For conqueterm {{{
+let g:ConqueTerm_Color = 1
+" }}}
+
+" For airline {{{
+let g:airline_powerline_fonts = 1
+set laststatus=2
+" }}}
+
 " }}}
 
 " Keybindings/remappings ---------------------------------------{{{
 
 noremap H ^
 noremap L $
-inoremap {<CR>  {<CR>}<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
 cmap W w<CR>
 cmap Q q<CR>
 cmap w! !sudo tee %
@@ -189,7 +193,7 @@ augroup vimrc_autocmd
 	autocmd FileType ruby set tabstop=2
 	autocmd FileType ruby set shiftwidth=2
 	autocmd FileType ruby set expandtab
-	autocmd FileType ruby imap <S-CR>    <CR><CR>end<Esc>-cc
+	autocmd FileType ruby imap <S-CR> <CR><CR>end<Esc>-cc
 	" }}}
 	" Shell {{{
 	autocmd FileType sh setlocal comments-=:#
