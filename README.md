@@ -1,4 +1,4 @@
-Vim
+vim
 ---
 For portability and backups.
 Requires the newest version of vim or gvim.
