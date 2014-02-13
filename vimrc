@@ -131,7 +131,10 @@ let g:ConqueTerm_Color = 1
 
 " For airline {{{
 let g:airline_powerline_fonts = 1
+" Always show airline status
 set laststatus=2
+" Hide the default mode text (e.g. -- INSERT -- below the statusline
+set noshowmode
 " }}}
 
 " }}}
@@ -157,8 +160,8 @@ let mapleader =","
 let maplocalleader ="\\"
 
 nnoremap <Leader>c :setlocal spell!<CR>
-nnoremap <Leader>x :ConqueTermVSplit bash<CR>
-nnoremap <Leader>z :ConqueTermSplit bash<CR>
+nnoremap <Leader>x :ConqueTermVSplit bash --norc<CR>
+nnoremap <Leader>z :ConqueTermSplit bash --norc<CR>
 nnoremap <Leader>n :NERDTreeToggle .<CR>
 nnoremap <Leader><Space> :let @/ = ""<CR>
 
