@@ -34,8 +34,6 @@ set shiftwidth=4
 set history=1000
 " Lots of undo levels
 set undolevels=1000
-" Use the system clipboard as default copy/paste register
-set clipboard=unnamedplus
 " Have vim as title in a shell
 set title
 " Have backspace act as it should
@@ -126,11 +124,11 @@ let NERDTreeChDirMode=2
 " }}}
 
 " For conqueterm {{{
-let g:ConqueTerm_Color = 1
+"let g:ConqueTerm_Color = 1
 " }}}
 
 " For airline {{{
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 " Always show airline status
 set laststatus=2
 " Hide the default mode text (e.g. -- INSERT -- below the statusline
@@ -209,3 +207,4 @@ augroup vimrc_autocmd
 augroup END
 
 " }}}
+
