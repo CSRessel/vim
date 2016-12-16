@@ -69,6 +69,9 @@ set noesckeys
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
+" Goodbye annoying modeline error messages
+set modelines=0
+
 " Restore cursor position on file open {{{
 augroup JumpCursorOnEdit
 	au!
