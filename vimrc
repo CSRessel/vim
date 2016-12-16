@@ -163,6 +163,17 @@ nnoremap <Leader>z :ConqueTermSplit bash --norc<CR>
 nnoremap <Leader>n :NERDTreeToggle .<CR>
 nnoremap <Leader><Space> :let @/ = ""<CR>
 
+nnoremap <Leader>\ :vertical resize 80<CR>
+nnoremap <Leader>[ :vertical resize -10<CR>
+nnoremap <Leader>] :vertical resize +10<CR>
+nnoremap <Leader>{ :vertical resize -1<CR>
+nnoremap <Leader>} :vertical resize +1<CR>
+
+nnoremap <Leader>- :resize -10<CR>
+nnoremap <Leader>= :resize +10<CR>
+nnoremap <Leader>_ :resize -1<CR>
+nnoremap <Leader>+ :resize +1<CR>
+
 " }}}
 
 " Filetype options ---------------------------------------------{{{
