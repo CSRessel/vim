@@ -18,6 +18,8 @@ syntax on
 
 " Options ------------------------------------------------------{{{
 
+" Mouse isn't ALL bad
+set mouse=a
 " Search as you type
 set incsearch
 " highlight search matches
@@ -110,6 +112,17 @@ endif
 " Plugin stuff -------------------------------------------------{{{
 
 " Plugin mappings are in 'Keybindings/remappings' or 'Leaders'
+
+" For syntastic {{{
+hi clear SignColumn " for plugins like Syntastic putting symbols in sign column
+
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+augroup mySyntastic
+	au!
+	au FileType tex let b:syntastic_mode = "passive"
+augroup END
+" }}}
 
 " For autoclose {{{
 let g:AutoClosePairs = "() [] \" '"
