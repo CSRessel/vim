@@ -1,18 +1,41 @@
+" github.com/CSRessel/dotvim
 " vimrc
-" Author: C S Ressel
 " Created 6/16/13
 "---------------------------------------------------------------
 
-" Preamble -----------------------------------------------------{{{
+" Preamble and vim-plug ----------------------------------------{{{
 
 " Automatically reload vimrc when it's saved
 autocmd BufWritePost .vimrc so ~/.vimrc
 
-filetype off
-execute pathogen#infect()
-filetype plugin indent on
-set nocompatible
-syntax on
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-syntastic/syntastic'
+Plug 'VundleVim/Vundle.vim'
+
+" Initialize plugin system
+call plug#end()
 
 " }}}
 
